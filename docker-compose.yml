@@ -8,9 +8,10 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: quartz_application
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
 
   quartz-app:
     build: .
@@ -25,8 +26,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: password
       SPRING_MAIL_HOST: smtp.gmail.com
       SPRING_MAIL_PORT: 587
-      SPRING_MAIL_USERNAME: altynbek3841@gmail.com
-      SPRING_MAIL_PASSWORD: your_password_here
+      SPRING_MAIL_USERNAME: altynbek4649@gmail.com
+      SPRING_MAIL_PASSWORD: mvly tgfn cwnf qifs
       SPRING_MAIL_PROPERTIES_MAIL_SMPT_AUTH: true
       SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: true
     restart: on-failure
