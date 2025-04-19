@@ -3,6 +3,8 @@ package com.example.qwartz_scheduler.web;
 import com.example.qwartz_scheduler.payload.EmailRequest;
 import com.example.qwartz_scheduler.payload.EmailResponse;
 import com.example.qwartz_scheduler.quartz.job.EmailJob;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
@@ -20,11 +22,13 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
+@Tag(name = "Email Scheduler", description = "REST API для планирования отправки email сообщений")
 public class EmailSchedulerController {
 
     @Autowired
     private Scheduler scheduler;
 
+    @Operation(summary = "Планирование отправки email", description = "Создает Quartz задачу для отправки письма в указанное время")
     @PostMapping("/schedule/email")
     public ResponseEntity<EmailResponse> scheduleEmail(@Valid @RequestBody EmailRequest emailRequest) {
         try {
@@ -50,7 +54,7 @@ public class EmailSchedulerController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(emailResponse);
         }
     }
-
+    @Operation(summary = "Проверка API", description = "Простой GET-метод для проверки работоспособности API")
     @GetMapping("/get")
     public ResponseEntity<String> getApiTest() {
         return ResponseEntity.ok("Get API Test - PASS");
