@@ -4,5 +4,5 @@ import jakarta.validation.constraints.Email;
 
 public class EmailRequest {
 
-    @Email
+//    @Email
 }
